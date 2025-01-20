@@ -34,7 +34,7 @@ const Header = () => {
               </div>
             </div>
           </div>
-          <div className="cartItems flex items-center gap-1">
+          <div className="cartItems flex items-center">
             <div>
               <img src="/images/cart.svg" alt="" />
             </div>
