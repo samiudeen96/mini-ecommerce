@@ -20,7 +20,7 @@ exports.getSingleProduct = async (req, res, next) => {
   } catch (error) {
     res.status(404).json({
         success: false,
-        message: "Unable to get a product with given"
+        message: "Unable to get a product with given Id"
     })
   }
 };
