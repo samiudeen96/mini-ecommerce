@@ -1,0 +1,36 @@
+[
+  {
+    "name": "Oppo F21s Pro 5G",
+    "price": 245.47,
+    "description": "Oppo F21s Pro 5G is a powerful device with high specification",
+    "ratings": 4.4,
+    "images": [
+      {
+        "image": "/images/products/1.png"
+      },
+      {
+        "image": "/images/products/2.png"
+      }
+    ],
+    "category": "Mobile phone",
+    "seller": "Amazon",
+    "stock": 5
+  },
+  {
+    "name": "Samsung s24 ultra 5G",
+    "price": 500,
+    "description": "Samsung s24 ultra 5G is a powerful device with high specification",
+    "ratings": 4.7,
+    "images": [
+      {
+        "image": "/images/products/3.png"
+      },
+      {
+        "image": "/images/products/4.png"
+      }
+    ],
+    "category": "Mobile phone",
+    "seller": "Amazon",
+    "stock": 3
+  }
+]
