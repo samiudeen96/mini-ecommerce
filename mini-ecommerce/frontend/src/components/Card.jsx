@@ -1,9 +1,9 @@
 import Rating from "./Rating";
-
+import { Link } from "react-router-dom";
 const Card = ({ product }) => {
   return (
     <>
-      <div className="w-80 flex flex-col items-center min-h-80">
+      <div className="w-64 flex flex-col items-center min-h-80">
         <div className="w-32 py-3">
           <img
             className="object-contain"
@@ -16,16 +16,21 @@ const Card = ({ product }) => {
           {/* <p>{product.description}</p> */}
         </div>
         <div className="p-1 ratings flex gap-2 items-center">
-          <div><Rating rating={product.ratings} /></div>
+          <div>
+            <Rating rating={product.ratings} />
+          </div>
           <div className="text-xs">{product.ratings}</div>
         </div>
         <div className="p-1">
           <p>${product.price}</p>
         </div>
         <div className="p-3 w-full">
-          <button className="text-sm bg-blue-950 text-white py-2 w-full rounded-sm hover:bg-blue-800 transition duration-200">
+          <Link
+            to={`/product/${product._id}`}
+            className="text-sm bg-blue-950 block text-center text-white py-2 w-full rounded-sm hover:bg-blue-800 transition duration-200"
+          >
             View details
-          </button>
+          </Link>
         </div>
       </div>
     </>
