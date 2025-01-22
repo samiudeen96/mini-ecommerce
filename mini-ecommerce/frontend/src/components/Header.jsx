@@ -19,11 +19,11 @@ const Header = ({ cartItems }) => {
             <div>
               <img src="/images/cart.svg" alt="" />
             </div>
-            <div className="bg-white rounded-full px-2 min-w-5">
+            <Link className="bg-white rounded-full px-2 min-w-5" to={'/cart'}>
               <p className="text-sm text-blue-950 font-bold">
                 {cartItems.length}
               </p>
-            </div>
+            </Link>
           </div>
         </div>
       </div>

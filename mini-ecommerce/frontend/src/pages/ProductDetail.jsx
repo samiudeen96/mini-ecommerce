@@ -18,19 +18,12 @@ const ProductDetail = ({ cartItems, setCartItems }) => {
     const existCartItem = cartItems.find(
       (item) => item.product._id == product._id
     );
-    if (!existCartItem) {
+    if (existCartItem) {
+      toast.info("This product already added into the cart");
+    } else {
       const newCartItems = { product, qty };
       setCartItems((state) => [...state, newCartItems]);
-      toast.success("Cart item added successfully", {
-        position: "bottom-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      toast.success("Cart item added successfully");
     }
   };
 
@@ -50,10 +43,20 @@ const ProductDetail = ({ cartItems, setCartItems }) => {
   return (
     <>
       {product && (
-        <div className="flex">
-          <div className="product_images w-5/12">
+        <div className="flex my-10">
+          {/* <div className="product_images w-5/12">
             <img src={product.images[0].image} alt="" />
+          </div> */}
+
+          <div
+            className=" w-5/12 -inset-80 py-3 bg-prop"
+            style={{
+              backgroundImage: `url(${product.images[0].image})`, // URL of the background image
+            }}
+          >
+            {/* <img className="object-cover" src={product.images[0].image} alt="" /> */}
           </div>
+
           <div className="product_content w-8/12">
             <h2 className="font-semibold text-3xl">{product.name}</h2>
             <p>{product.description}</p>

@@ -4,14 +4,15 @@ const Card = ({ product }) => {
   return (
     <>
       <div className="w-64 flex flex-col items-center min-h-80">
-        <div className="w-32 py-3">
-          <img
-            className="object-contain"
-            src={product.images[0].image}
-            alt=""
-          />
+        <div
+          className="w-32 h-32 py-3 bg-prop"
+          style={{
+            backgroundImage: `url(${product.images[0].image})`, // URL of the background image
+          }}
+        >
+          {/* <img className="object-cover" src={product.images[0].image} alt="" /> */}
         </div>
-        <div className="px-3 pb-2 text-center">
+        <div className="px-3 p-2 text-center">
           <p>{product.name}</p>
           {/* <p>{product.description}</p> */}
         </div>
