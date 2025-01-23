@@ -1,12 +1,16 @@
-const mongoose = require('mongoose')
+// Import the mongoose library to interact with MongoDB
+const mongoose = require('mongoose');
 
-
+// Define a function to establish a connection to the MongoDB database
 const connectDatabase = () => {
-  mongoose.connect(process.env.DB_URL).then((con) => {
-    console.log(`MongoDb connected to host: ${con.connection.host}`);
-    
-  });
+  // Use mongoose to connect to the database using the connection URL from the environment variable
+  mongoose.connect(process.env.DB_URL)
+    .then((con) => { 
+      // If the connection is successful, log a message indicating the database is connected
+      // 'con.connection.host' provides the hostname of the MongoDB server
+      console.log(`MongoDb connected to host: ${con.connection.host}`);
+    });
 };
 
-
+// Export the connectDatabase function so it can be used in other parts of the application
 module.exports = connectDatabase;
