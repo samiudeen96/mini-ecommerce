@@ -1,15 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { toast } from "react-toastify"
+import { toast } from "react-toastify";
 
-const Cart = ({ cartItems, setCartItems }) => {
+const Cart = ({ cartItems, setCartItems, setOrders }) => {
   const [complete, setComplete] = useState(false);
 
+  // Load cart items from localStorage when the component mounts
+  useEffect(() => {
+    const storedCartItems = JSON.parse(localStorage.getItem("Items"));
+    if (storedCartItems) {
+      setCartItems(storedCartItems);
+    }
+  }, [setCartItems]);
+
+  // Save cart items to localStorage whenever cartItems state changes
+  useEffect(() => {
+    localStorage.setItem("Items", JSON.stringify(cartItems));
+  }, [cartItems]);
+
   const increaseQty = (item) => {
-    // if (product.stock == qty || product.stock == 0) {
-    //   return;
-    // }
-    // setQty((state) => state + 1);
     if (item.product.stock == item.qty) {
       return;
     }
@@ -43,24 +52,29 @@ const Cart = ({ cartItems, setCartItems }) => {
     setCartItems(updatedCartItems);
   };
 
-  const createrder = () => {
+  const creatOrder = () => {
     fetch(`/api/order`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(cartItems),
-    }).then(() => {
-      setCartItems([]);
-      setComplete(true)
-      toast.success("Order Success")
-    });
+    })
+      .then(() => {
+        setCartItems([]);
+        setComplete(true);
+        toast.success("Order Success");
+      })
+      
+      fetch(`/api/orders`)
+      .then((res) => res.json())
+      .then((res) => setOrders(res.order));
   };
 
   return (
     <>
       {/* Debugging: Display JSON representation of cartItems */}
-      <pre>{JSON.stringify(cartItems, null, 2)}</pre>
+      {/* <pre>{JSON.stringify(cartItems, null, 2)}</pre> */}
 
       {cartItems && cartItems.length > 0 ? (
         <div className="my-10">
@@ -151,7 +165,7 @@ const Cart = ({ cartItems, setCartItems }) => {
                 </div>
                 <div className="flex justify-center mt-7">
                   <button
-                    onClick={createrder}
+                    onClick={creatOrder}
                     className="bg-blue-950 text-white text-sm px-8 py-2 rounded-sm"
                   >
                     Place Order

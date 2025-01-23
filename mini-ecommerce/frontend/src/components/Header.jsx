@@ -1,7 +1,7 @@
 import Search from "./Search";
 import { Link } from "react-router-dom";
 
-const Header = ({ cartItems }) => {
+const Header = ({ cartItems, orders }) => {
   return (
     <>
       <div className="bg-blue-950">
@@ -15,14 +15,30 @@ const Header = ({ cartItems }) => {
           <div className="searchbar ">
             <Search />
           </div>
-          <div className="cartItems flex items-center">
-            <div>
-              <img src="/images/cart.svg" alt="" />
-            </div>
-            <Link className="bg-white rounded-full px-2 min-w-5" to={'/cart'}>
-              <p className="text-sm text-blue-950 font-bold">
-                {cartItems.length}
-              </p>
+          <div className="flex gap-10">
+
+            {/* order */}
+            <Link to={"/order"} className="cartItems flex items-center gap-1">
+              <div>
+                <img src="/images/order.svg" alt="" />
+              </div>
+              <div className="bg-white rounded-full px-2 min-w-5" >
+                <p className="text-sm text-blue-950 font-bold">
+                  {orders.length}
+                </p>
+              </div>
+            </Link>
+
+            {/* cart */}
+            <Link to={"/cart"} className="cartItems flex items-center">
+              <div>
+                <img src="/images/cart.svg" alt="" />
+              </div>
+              <div className="bg-white rounded-full px-2 min-w-5" >
+                <p className="text-sm text-blue-950 font-bold">
+                  {cartItems.length}
+                </p>
+              </div>
             </Link>
           </div>
         </div>
