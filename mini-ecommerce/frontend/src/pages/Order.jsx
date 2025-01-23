@@ -1,31 +1,12 @@
 import { useEffect } from "react";
 
 const Order = ({ orders, setOrders }) => {
-  // useEffect(() => {
-  //   fetch(`/api/orders`)
-  //     .then((res) => res.json())
-  //     .then((res) => setOrders(res.order));
-  // }, []);
 
   return (
     <>
       {/* <pre>{JSON.stringify(orders, null, 2)}</pre> */}
       <div className="my-10">
         {orders.map((order) => (
-          // <div>
-          //   <div key={order._id}>
-          //     <h2>order name: {order.amount}</h2>
-          //     <h3>Status: {order.status}</h3>
-          //   </div>
-
-          //   {order.cartItems.map((item) => (
-          //     <>
-          //
-          //       <img src={item.product.images[0].image} alt="" />
-          //     </>
-          //   ))}
-          // </>
-
           <div
             className="flex mb-3 items-center justify-between shadow p-4 rounded-md border-t"
             key={order._id}
